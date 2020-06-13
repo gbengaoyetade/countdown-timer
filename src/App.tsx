@@ -18,10 +18,6 @@ const App = () => {
     setTime(convertedTime);
     setTimeCopy(convertedTime);
   };
-  console.log({ time, timeCopy });
-  if (time <= timeCopy / 2 && time !== 0) {
-    console.log('Yas!!!');
-  }
 
   if (time === 0 && timerIsStarted === true) {
     setTimerIsStarted(false);
