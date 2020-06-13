@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 50px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.space-between {
+  display: flex;
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+}
+
+.app form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  font-size: 1.3rem;
+}
+
+.app label {
+  font-weight: 700;
+}
+
+.countdown-input {
+  padding: 10px;
+  width: 120px;
+  height: 40px;
+  color: #777;
+}
+
+.start-btn {
+  background-color: rgb(30, 194, 172);
+  border: none;
+  padding: 10px;
+  color: #fff;
+  width: 100px;
+  height: 40px;
+}
+
+.start-btn:hover {
+  background-color: rgb(18, 143, 126);
+}
+
+.start-btn:disabled {
+  background: #ccc;
+}
+
+.message {
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.countdown-timer {
+  font-weight: 900;
+  font-size: 10rem;
+  padding: 0;
+  margin: 0;
+}
+
+.speed-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.speed-btn {
+  background-color: #fff;
+  height: 50px;
+  width: 80px;
+  padding: 5px;
+  border: 1px solid #444;
+  font-size: 1.2rem;
+}
+.speed-btn:hover {
+  background-color: #777;
+  transition: background-color linear 0.3s;
 }
