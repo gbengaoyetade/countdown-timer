@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import CountdownTimer from './components/CountdownTimer';
 import TimerSpeed from './components/TimerSpeed';
+import Message from './components/Message';
 
 const App = () => {
   const [ timerIsStarted, setTimerIsStarted ] = useState(false);
@@ -14,14 +15,20 @@ const App = () => {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const convertedTime = Number(event.target.value);
-    setTime(convertedTime);
-    setTimeCopy(convertedTime);
+    const userInput = event.target.value;
+    if (userInput.match(/^\d+$/)) {
+      const convertedTime = Number(userInput);
+      setTime(convertedTime * 60);
+      setTimeCopy(convertedTime * 60);
+    }
   };
 
   if (time === 0 && timerIsStarted === true) {
     setTimerIsStarted(false);
   }
+
+  const inputDisabled = timerIsStarted && time !== 0;
+  const buttonDisabled = timerIsStarted || time === 0;
 
   return (
     <div className="app">
@@ -29,13 +36,13 @@ const App = () => {
         <div className="form-wrapper">
           <form>
             <label>Countdown: </label>
-            <input type="number" className="countdown-input" placeholder="(Min)" onChange={handleChange} disabled={timerIsStarted && time !== 0} />
+            <input type="number" className="countdown-input" placeholder="(Min)" min="0" pattern="\d*" onChange={handleChange} disabled={inputDisabled} />
           </form>
-          <button className="start-btn" onClick={toggleTimerStart} disabled={timerIsStarted || time === 0}>
+          <button className="start-btn" onClick={toggleTimerStart} disabled={buttonDisabled}>
             START
           </button>
         </div>
-        <p className="message">{time <= timeCopy / 2 && time !== 0 ? 'More than halfway there!' : ''}</p>
+        <Message time={time} timeCopy={timeCopy} />
         <CountdownTimer time={time} toggleTimerStart={toggleTimerStart} timerIsStarted={timerIsStarted} timerSpeed={timerSpeed} setTime={setTime} />
         <TimerSpeed setTimerSpeed={setTimerSpeed} />
       </div>

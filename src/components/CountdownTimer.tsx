@@ -24,10 +24,10 @@ const CountdownTimer = (props: CountDownTimerProps) => {
           savedCallback.current();
         }
 
-        let id = setInterval(tick, 1000 / delay);
+        const id = setInterval(tick, 1000 / delay);
         return () => clearInterval(id);
       },
-      [ delay ]
+      [delay],
     );
   };
 
@@ -36,10 +36,13 @@ const CountdownTimer = (props: CountDownTimerProps) => {
       setTime(time - 1);
     }
   }, timerSpeed);
+  function fmtMSS(s: number) {
+    return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s;
+  }
 
   return (
     <div className="countdown-timer-wrapper">
-      <p className="countdown-timer">{time}</p>
+      <p className="countdown-timer">{fmtMSS(time)}</p>
       <button onClick={() => toggleTimerStart()}>=</button>
     </div>
   );
