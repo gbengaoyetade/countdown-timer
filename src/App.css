@@ -14,6 +14,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 500px;
+  overflow: scroll;
 }
 
 .space-between {
@@ -78,20 +81,29 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 500px;
+  width: 97%;
 }
 
 .countdown-timer {
   font-weight: 900;
-  font-size: 13rem;
+  font-size: 11rem;
   padding: 0;
   margin: 0 10px 0 0;
+  overflow: scroll;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 2.9rem;
+  cursor: pointer;
 }
 
 .speed-btn-wrapper {
   display: flex;
   justify-content: space-between;
   width: 58%;
+  min-width: 300px;
 }
 
 .speed-btn {
@@ -110,6 +122,12 @@
 
 .active-btn {
   background-color: #777;
+}
+
+.message {
+  font-weight: 600;
+  font-style:italic;
+  font-size: 1.3rem;
 }
 
 .red-text {

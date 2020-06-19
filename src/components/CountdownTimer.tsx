@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
+
 interface CountDownTimerProps {
   time: number;
   timerSpeed: number;
@@ -40,10 +41,21 @@ const CountdownTimer = (props: CountDownTimerProps) => {
     return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s;
   }
 
+  const getToggleIcon = () => {
+    if(!timerIsStarted && time > 0){
+      return  <i className="far fa-play-circle"></i>
+    }
+    return <i className="far fa-pause-circle"></i>
+  }
   return (
     <div className="countdown-timer-wrapper">
       <p className="countdown-timer">{fmtMSS(time)}</p>
-      <button onClick={() => toggleTimerStart()}>=</button>
+      <button
+        className="toggle-btn"
+        onClick={() => time > 0 && toggleTimerStart()} // only works when time is greater than 0
+      >
+        {getToggleIcon()}
+      </button>
     </div>
   );
 };

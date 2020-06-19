@@ -28,7 +28,12 @@ const App = () => {
   }
 
   const inputDisabled = timerIsStarted && time !== 0;
-  const buttonDisabled = timerIsStarted || time === 0;
+
+  const resetCountdown = () => {
+    setTimerIsStarted(false)
+    setTime(0)
+    setTimeCopy(0)
+  }
 
   return (
     <div className="app">
@@ -36,14 +41,31 @@ const App = () => {
         <div className="form-wrapper">
           <form>
             <label>Countdown: </label>
-            <input type="number" className="countdown-input" placeholder="(Min)" min="0" pattern="\d*" onChange={handleChange} disabled={inputDisabled} />
+            <input
+              type="number"
+              className="countdown-input"
+              placeholder="(Min)"
+              min="0"
+              pattern="\d*"
+              onChange={handleChange}
+              disabled={inputDisabled}
+            />
           </form>
-          <button className="start-btn" onClick={toggleTimerStart} disabled={buttonDisabled}>
-            START
+          <button
+            className="start-btn"
+            onClick={timerIsStarted ? resetCountdown : toggleTimerStart}
+          >
+            { timerIsStarted ? 'RESET' : 'START' }
           </button>
         </div>
         <Message time={time} timeCopy={timeCopy} />
-        <CountdownTimer time={time} toggleTimerStart={toggleTimerStart} timerIsStarted={timerIsStarted} timerSpeed={timerSpeed} setTime={setTime} />
+        <CountdownTimer
+          time={time}
+          toggleTimerStart={toggleTimerStart}
+          timerIsStarted={timerIsStarted}
+          timerSpeed={timerSpeed}
+          setTime={setTime}
+        />
         <TimerSpeed setTimerSpeed={setTimerSpeed} />
       </div>
     </div>
