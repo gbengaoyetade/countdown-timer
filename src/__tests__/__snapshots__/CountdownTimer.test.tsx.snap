@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CountdownTimer should render without crashing 1`] = `
+<div>
+  <div
+    class="countdown-timer-wrapper"
+  >
+    <p
+      class="countdown-timer"
+    >
+      0:30
+    </p>
+    <button
+      class="toggle-btn"
+    >
+      <i
+        class="far fa-play-circle"
+      />
+    </button>
+  </div>
+</div>
+`;
